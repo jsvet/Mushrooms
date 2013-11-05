@@ -49,20 +49,3 @@ Game.mushroom = function( myX, myY){
 	return my;
 };
 
-var Greeter = function (friend){
-	var myFriend = friend;
-	
-	this.greeting = "Goodmorning";
-	
-	this.sayHello = function (){
-		return this.greeting + " " + myFriend;
-	};
-};
-
-var brennan = new Greeter("Brennan");
-brennan.greeting = "hullo";
-
-//brennan.myFriend = "Keld";
-
-var test = brennan.sayHello();
-console.log(test);
