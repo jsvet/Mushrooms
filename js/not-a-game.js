@@ -17,16 +17,20 @@ Game.showSplash = function(){
 		startGameBtn.color = btnHoverColor;
 		Game.stage.update();
 	};
+	startGameBtn.addEventListener("mouseover", startGameBtn.onMouseOver);
+
 	
 	startGameBtn.onMouseOut = function(){
 		startGameBtn.color = btnColor;
 		Game.stage.update();
 	};
+	startGameBtn.addEventListener("mouseout", startGameBtn.onMouseOut);
 	
 	startGameBtn.onClick = function(){
 		Game.stage.removeAllChildren();
 		Game.showMain();
 	};
+	startGameBtn.addEventListener("click", startGameBtn.onClick);
 };
 
 Game.showSplash();
@@ -46,6 +50,7 @@ Game.mushroom = function( myX, myY){
 		my.rotation += 10;
 		Game.stage.update();
 	};
+	my.addEventListener("click", my.onClick);
 	return my;
 };
 
