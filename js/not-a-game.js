@@ -3,54 +3,60 @@ Game.stage = new createjs.Stage( $("#stage") );
 Game.stageWidth = $("#stage").width;
 
 Game.showSplash = function(){
-	var btnColor = "#fff",
-		btnHoverColor ="#C00",
-		startGameBtn = new createjs.Text("PLAY NOW", "24px Impact", btnColor);
+    console.log("splash");
+    var btnColor = "#fff",
+    btnHoverColor ="#C00",
+    startGameBtn = new createjs.Text("PLAY NOW", "24px Impact", btnColor);
 	
-	startGameBtn.x = (Game.stageWidth / 2) - (startGameBtn.getMeasuredWidth() / 2);
-	startGameBtn.y = 130;
-	Game.stage.addChild(startGameBtn);
-	Game.stage.update();
+    startGameBtn.x = (Game.stageWidth / 2) - (startGameBtn.getMeasuredWidth() / 2);
+    
+    //Thomas changed a value to reflect the small canvas height
+    startGameBtn.y = 20;
+    //code was
+    //startGameBtn.y = 130;
+    Game.stage.addChild(startGameBtn);
+    Game.stage.update();
 	
-	Game.stage.enableMouseOver(15);
-	startGameBtn.onMouseOver = function(){
-		startGameBtn.color = btnHoverColor;
-		Game.stage.update();
-	};
-	startGameBtn.addEventListener("mouseover", startGameBtn.onMouseOver);
-
+    Game.stage.enableMouseOver(15);
+    startGameBtn.onMouseOver = function(){
+        startGameBtn.color = btnHoverColor;
+        Game.stage.update();
+    };
 	
-	startGameBtn.onMouseOut = function(){
-		startGameBtn.color = btnColor;
-		Game.stage.update();
-	};
-	startGameBtn.addEventListener("mouseout", startGameBtn.onMouseOut);
+    startGameBtn.onMouseOut = function(){
+        startGameBtn.color = btnColor;
+        Game.stage.update();
+    };
 	
-	startGameBtn.onClick = function(){
-		Game.stage.removeAllChildren();
-		Game.showMain();
-	};
-	startGameBtn.addEventListener("click", startGameBtn.onClick);
+    //Thomas changed event handling
+    //code was:
+    //startGameBtn.onClick = function(){
+    startGameBtn.addEventListener("click", function(){
+        Game.stage.removeAllChildren();
+        Game.showMain();
+    });
 };
 
 Game.showSplash();
 
 Game.showMain = function(){
-	Game.stage.addChild( new Game.mushroom(100, 100) );
-	Game.stage.addChild( new Game.mushroom(200, 100) );
-	Game.stage.update();
+    //Thomas changed value to reflect the small canvas height
+    Game.stage.addChild( new Game.mushroom(100, 20) );
+    Game.stage.addChild( new Game.mushroom(200, 20) );
+    Game.stage.update();
 };
 
 Game.mushroom = function( myX, myY){
-	var my = new createjs.Bitmap("img/small-mushroom.png");
-	my.x = myX;
-	my.y = myY;
+    var my = new createjs.Bitmap("img/small-mushroom.png");
+    my.x = myX;
+    my.y = myY;
 	
-	my.onClick = function(){
-		my.rotation += 10;
-		Game.stage.update();
-	};
-	my.addEventListener("click", my.onClick);
-	return my;
+    //Thomas changed event handling
+    //code was
+    //my.onClick = function(){
+    my.addEventListener("click", function(){
+        my.rotation += 10;
+        Game.stage.update();
+    });
+    return my;
 };
-
